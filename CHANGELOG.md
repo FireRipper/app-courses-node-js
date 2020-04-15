@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/FireRipper/app-courses-node-js/compare/v1.0.0...v1.0.1) (2020-04-15)
+
+
+### Features
+
+* **orders:** add layout for display orders, add to app.js function toDate (convert date). Refactor router orders.js - get request('/'). ([4b6a87e](https://github.com/FireRipper/app-courses-node-js/commit/4b6a87e833a51ef5d00762dd0c4460fa8f8505ef))
+* **orders:** add logic to route orders.js for process order in post request('/order') and add method to user.js clear cart (when user making order, then cart will be clear). ([2bac546](https://github.com/FireRipper/app-courses-node-js/commit/2bac546df0baa7bf495197cc6c3e2ac8e1db2e6e))
+
 ## 1.0.0 (2020-04-15)
 
 
