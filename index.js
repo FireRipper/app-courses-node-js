@@ -6,6 +6,7 @@ const homeRoutes = require('./routes/home')
 const coursesRoutes = require('./routes/courses')
 const addRoutes = require('./routes/add')
 const cardRoutes = require('./routes/card')
+const ordersRoutes = require('./routes/orders')
 const User = require('./models/user')
 
 const app = express()
@@ -32,13 +33,16 @@ app.use(async (req, res, next) => {
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 
+// Register routes
 app.use('/', homeRoutes)
 app.use('/courses', coursesRoutes)
 app.use('/add', addRoutes)
 app.use('/card', cardRoutes)
+app.use('/orders', ordersRoutes)
 
 const PORT = process.env.PORT || 5000
 
+// Running app
 async function start() {
     try {
         const url = `mongodb+srv://illia:YNnPzj1l0R7xb8GI@cluster0-dcvzy.mongodb.net/shop`
