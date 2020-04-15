@@ -1,6 +1,7 @@
 const { Router } = require('express')
 const Course = require('../models/course')
 const router = Router()
+const { mapCartItems, computePrice } = require('../helpers/cart-helper')
 
 router.post('/add', async (req, res) => {
     const course = await Course.findById(req.body.id)
@@ -14,13 +15,18 @@ router.delete('/remove/:id', async (req, res) => {
 })
 
 router.get('/', async (req, res) => {
-    // const card = await Card.fetch()
-    // res.render('card', {
-    //     title: 'Корзина',
-    //     isCard: true,
-    //     courses: card.courses,
-    //     price: card.price
-    // })
+    const user = await req.user
+        .populate('cart.items.courseId')
+        .execPopulate()
+
+    const courses = mapCartItems(user.cart)
+
+    res.render('card', {
+        title: 'Корзина',
+        isCard: true,
+        courses: courses,
+        price: computePrice(courses)
+    })
 })
 
 module.exports = router
