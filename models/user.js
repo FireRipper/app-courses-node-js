@@ -74,4 +74,13 @@ userSchema.methods.removeFromCart = function (id) {
     return this.save()
 }
 
+/**
+ * clearCart. Remove all items from model userSchema.cart
+ * @return {Promise|void|*}
+ */
+userSchema.methods.clearCart = function () {
+    this.cart = { items: [] }
+    return this.save()
+}
+
 module.exports = model('User', userSchema)
