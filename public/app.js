@@ -1,6 +1,7 @@
 // Variables
 const $card = document.querySelector('#card')
 const price = document.querySelectorAll('.price')
+const date = document.querySelectorAll('.date')
 
 // Functions
 /**
@@ -15,8 +16,28 @@ const toCurrency = price => {
     }).format(price)
 }
 
+/**
+ * toDate. Convert date to normal view '15 апреля 2020 г., 17:03:10'
+ * @param {string} date
+ * @return {string} normal date
+ */
+const toDate = date => {
+    return new Intl.DateTimeFormat('ru-Ru', {
+        day: '2-digit',
+        month: 'long',
+        year: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit'
+    }).format(new Date(date))
+}
+
 price.forEach(node => {
     node.textContent = toCurrency(node.textContent)
+})
+
+date.forEach(node => {
+    node.textContent = toDate(node.textContent)
 })
 
 // Events
