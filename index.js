@@ -2,10 +2,11 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const path = require('path')
+const csrf = require('csurf')
+const flash = require('connect-flash')
 
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
-const csrf = require('csurf')
 
 const homeRoutes = require('./routes/home')
 const coursesRoutes = require('./routes/courses')
@@ -46,6 +47,7 @@ app.use(session({
 
 // Middleware
 app.use(csrf())
+app.use(flash())
 app.use(varMiddleware)
 app.use(userMiddleware)
 
