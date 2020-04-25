@@ -14,6 +14,7 @@ const ordersRoutes = require('./routes/orders')
 const authRoutes = require('./routes/auth')
 
 const varMiddleware = require('./middleware/variables')
+const userMiddleware = require('./middleware/user')
 
 const MONGODB_URL = `mongodb+srv://illia:YNnPzj1l0R7xb8GI@cluster0-dcvzy.mongodb.net/shop`
 
@@ -41,7 +42,10 @@ app.use(session({
     saveUninitialized: false,
     store
 }))
+
+// Middleware
 app.use(varMiddleware)
+app.use(userMiddleware)
 
 // Register routes
 app.use('/', homeRoutes)
