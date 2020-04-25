@@ -2,6 +2,11 @@
 const $card = document.querySelector('#card')
 const price = document.querySelectorAll('.price')
 const date = document.querySelectorAll('.date')
+const tabs = document.querySelectorAll('.tabs')
+
+
+// Init elements materialize
+M.Tabs.init(tabs)
 
 // Functions
 /**
@@ -32,6 +37,8 @@ const toDate = date => {
     }).format(new Date(date))
 }
 
+
+// Convert some data
 price.forEach(node => {
     node.textContent = toCurrency(node.textContent)
 })
@@ -71,3 +78,4 @@ if ($card) {
         }
     })
 }
+
