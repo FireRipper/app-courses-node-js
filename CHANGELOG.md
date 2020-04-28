@@ -2,6 +2,30 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/FireRipper/app-courses-node-js/compare/v1.0.1...v1.1.0) (2020-04-28)
+
+
+### Features
+
+* **auth:** add route auth - for display page login or register. Add new part of menu - Login to navbar.hbs. Register new routes in index.js. ([9a68160](https://github.com/FireRipper/app-courses-node-js/commit/9a6816038cd64eccbc253c21aa01056d05a9216b))
+* **csrf protection:** add package - csurf for generate unique csrf token for users. Use middleware csrf in index.js. Add hidden field with name '_csrf' to all forms which sent post request. ([4259a49](https://github.com/FireRipper/app-courses-node-js/commit/4259a4929f02286b4e5aa6382afd8956bad0794d))
+* **middleware and session:** add package - express-session; add middleware for check auth user; add 2 requests (get and post) to auth.js for login user in app. Add session and save session. Add possibility logout for user. ([32d60c3](https://github.com/FireRipper/app-courses-node-js/commit/32d60c339414b3b45a0a763470315458f2cf84af))
+* **process error:** add package - connect-flash. Add display errors - when user made some mistakes when registering or logining. ([8661f44](https://github.com/FireRipper/app-courses-node-js/commit/8661f444f51948ff3f88cb2f13004aa3fea15eba))
+* **protected authorization:** add package - bcryptjs for hashed password, add field password to model user, add field "Your name" to login.hbs, and change logic processing register and login users with use DB (save, check user in DB). ([e550bac](https://github.com/FireRipper/app-courses-node-js/commit/e550bac901cad2b2ce7fa86220bf8fa66a07c22e))
+* **protected routes:** add middleware - auth for protecting routes (add, card, courses and orders). ([bcacecc](https://github.com/FireRipper/app-courses-node-js/commit/bcacecc7c1768b668e246f990687f7a983fe2dc2))
+* **reset password - logic:** add 2 requests get and post for reset - first get request for display form with button for reset and second post request - add logic for reset password. ([0a7653b](https://github.com/FireRipper/app-courses-node-js/commit/0a7653b1c28dd656cb5624fb48147daa49e7646a))
+* **reset password - logic:** add get request with token for reset password and add view password for input new user password and refresh old password on new password. Add some protection for to go page password and add logic for check lifetime token in db. ([f298145](https://github.com/FireRipper/app-courses-node-js/commit/f298145987e5f7ab369fe782589dc76bfc9d295d))
+* **reset password without logic:** add layout letter for reset password. Add to model User new fields - resetToken, resetTokenExp (lifetime). Add view reset.hbs; add to login.hbs - link for reset password. ([036c705](https://github.com/FireRipper/app-courses-node-js/commit/036c70555f05bf4ea9eced9da86c9607433bff1e))
+* **save session:** add package connect-mongodb-session for save session in DB; change access to buttons on page all-courses for register (has access to buttons 'edit course' and 'buy course') and unregister (has access to only one button it's view information about 1 course) users. ([2c5e232](https://github.com/FireRipper/app-courses-node-js/commit/2c5e2328597ab1354c50cc6dacf8accd04ca89ef))
+* **send mail:** add folder keys with file index.js - it's config for app. Add packages - nodemailer, nodemailer-sendgrid-transport; Use service SendGrid for sending letters. Add layout letter for registration. Sending an email to the user when he is registered. ([bed13a8](https://github.com/FireRipper/app-courses-node-js/commit/bed13a827b13af43055bfbb129884cca4798ba52))
+* **view authorization:** add view login.hbs with forms - register, login. Add init element materialize in app.js ([61a64e0](https://github.com/FireRipper/app-courses-node-js/commit/61a64e0164f51c6a1a6f183eb29914b722ba855c))
+
+
+### Bug Fixes
+
+* **cart:** fix added product to cart, add middleware user.js for processing user which it'll come from collection 'session'. ([3cf9e1a](https://github.com/FireRipper/app-courses-node-js/commit/3cf9e1a48f68f9af74a3014fd64ca832c5c5a42e))
+* **data:** delete folder data. ([ed03acd](https://github.com/FireRipper/app-courses-node-js/commit/ed03acdcb09497af8ab885d369d938cccbda4cf3))
+
 ### [1.0.1](https://github.com/FireRipper/app-courses-node-js/compare/v1.0.0...v1.0.1) (2020-04-15)
 
 
