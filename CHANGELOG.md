@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.2.0](https://github.com/FireRipper/app-courses-node-js/compare/v1.1.0...v1.2.0) (2020-04-29)
+
+
+### Features
+
+* **404:** add middleware for display 404 page when page not found. Use middleware in index.js. ([7a050c2](https://github.com/FireRipper/app-courses-node-js/commit/7a050c26ff1d1f0fc3f29752471162dd59c5ab73))
+* **keys:** add page profile. Add possibility - change 'user name' and add or change user avatar. Add package multer for upload img files. Add middleware file for correct work multer and add it's to index.js. In index.js use folder 'images' which static. Add routes for process all actions which refers with page profile. ([4ebe9f3](https://github.com/FireRipper/app-courses-node-js/commit/4ebe9f375aa801b4f364065d5f3a038d5a4304cc))
+* **profile:** add view for profile. ([700942e](https://github.com/FireRipper/app-courses-node-js/commit/700942e1a6ab21297cc7a0221293693d6f39c3be))
+* **validators:** add package - express-validator, add validators.js - validate all necessary fields and return error with message for front-end. Refactor post request ('/register'). ([d36519c](https://github.com/FireRipper/app-courses-node-js/commit/d36519c40e5658c0f4865196a8091b3590006c97))
+* **validators:** add validators for - login, edit course, add course pages. ([2e96fbd](https://github.com/FireRipper/app-courses-node-js/commit/2e96fbd275588a4cb4b4b4e7c983e498d84c2d06))
+
 ## [1.1.0](https://github.com/FireRipper/app-courses-node-js/compare/v1.0.1...v1.1.0) (2020-04-28)
 
 
