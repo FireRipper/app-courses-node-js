@@ -2,9 +2,9 @@ const express = require('express')
 const exphbs = require('express-handlebars')
 const mongoose = require('mongoose')
 const path = require('path')
+const dotenv = require('dotenv').config()
 const csrf = require('csurf')
 const flash = require('connect-flash')
-const keys = require('./keys')
 
 const session = require('express-session')
 const MongoStore = require('connect-mongodb-session')(session)
@@ -30,7 +30,7 @@ const hbs = exphbs.create({
 
 const store = new MongoStore({
     collection: 'sessions',
-    uri: keys.MONGODB_URI
+    uri: process.env.MONGODB_URI
 })
 
 app.engine('hbs', hbs.engine)
@@ -40,7 +40,7 @@ app.set('views', 'views') // Folder with layouts
 app.use(express.static(path.join(__dirname, 'public')))
 app.use(express.urlencoded({ extended: true }))
 app.use(session({
-    secret: keys.SESSION_SECRET,
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: false,
     store
@@ -65,14 +65,14 @@ app.use(errorMiddleware)
 // Running app
 async function start() {
     try {
-        await mongoose.connect(keys.MONGODB_URI, {
+        await mongoose.connect(process.env.MONGODB_URI, {
             useNewUrlParser: true,
             useUnifiedTopology: true,
             useFindAndModify: false
         })
 
-        app.listen(keys.PORT, () => {
-            console.log(`Server is running on port ${keys.PORT}`)
+        app.listen(process.env.BASE_PORT, () => {
+            console.log(`Server is running on port ${process.env.BASE_PORT}`)
         })
     } catch (e) {
         console.log(e)
