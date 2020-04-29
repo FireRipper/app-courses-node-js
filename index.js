@@ -15,10 +15,12 @@ const addRoutes = require('./routes/add')
 const cardRoutes = require('./routes/card')
 const ordersRoutes = require('./routes/orders')
 const authRoutes = require('./routes/auth')
+const profileRoutes = require('./routes/profile')
 
 const errorMiddleware = require('./middleware/error')
 const varMiddleware = require('./middleware/variables')
 const userMiddleware = require('./middleware/user')
+const fileMiddleware = require('./middleware/file')
 
 const app = express()
 
@@ -38,6 +40,7 @@ app.set('view engine', 'hbs')
 app.set('views', 'views') // Folder with layouts
 
 app.use(express.static(path.join(__dirname, 'public')))
+app.use('/images',express.static(path.join(__dirname, 'images')))
 app.use(express.urlencoded({ extended: true }))
 app.use(session({
     secret: process.env.SESSION_SECRET,
@@ -47,6 +50,7 @@ app.use(session({
 }))
 
 // Middleware
+app.use(fileMiddleware.single('avatar'))
 app.use(csrf())
 app.use(flash())
 app.use(varMiddleware)
@@ -59,6 +63,7 @@ app.use('/add', addRoutes)
 app.use('/card', cardRoutes)
 app.use('/orders', ordersRoutes)
 app.use('/auth', authRoutes)
+app.use('/profile', profileRoutes)
 
 app.use(errorMiddleware)
 
